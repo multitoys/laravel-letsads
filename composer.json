@@ -1,0 +1,44 @@
+{
+    "name": "rhincodon/laravel-letsads",
+    "description": "Laravel LetsAds SMS Service Provider",
+    "keywords": [
+        "laravel",
+        "letsads",
+        "sms"
+    ],
+    "homepage": "https://github.com/rhincodon/laravel-letsads",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Denis Isaychenko",
+            "email": "rhinodontypicus@gmail.com",
+            "homepage": "http://laravelinfo.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php" : ">=5.6.0"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "~2.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Rhinodontypicus\\LetsAds\\": "src"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "config": {
+        "bin-dir": "vendor/bin"
+    },
+    "scripts": {
+        "test": "vendor/bin/phpspec run"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
