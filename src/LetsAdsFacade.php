@@ -11,6 +11,6 @@ class LetsAdsFacade extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'letsads';
+        return "letsads";
     }
 }
