@@ -26,18 +26,62 @@ class LetsAds
     }
 
     /**
-     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @return \ErrorException|\SimpleXMLElement
      */
     public function balance()
     {
         $xmlRequest = XmlRequest::createRequest($this->credentials);
-        $xmlRequest->addBalanceNode();
+        $xmlRequest->addNode("balance");
 
         $response = $this->getClient()->request("POST", "", [
             "body" => $xmlRequest->get()
         ]);
 
-        return $response;
+        return Response::get($response->getBody()->getContents());
+    }
+
+    /**
+     * @param string $message
+     * @param string $from
+     * @param string|array $recipients
+     * @return \ErrorException|\SimpleXMLElement
+     */
+    public function send($message, $from, $recipients)
+    {
+        $xmlRequest = XmlRequest::createRequest($this->credentials);
+        $xmlRequest->addNode("message");
+        $xmlRequest->addNode("from", $from, "message");
+        $xmlRequest->addNode("text", $message, "message");
+
+        if (!is_array($recipients)) {
+            $xmlRequest->addNode("recipient", $recipients, "message");
+        } else {
+            foreach ($recipients as $recipient) {
+                $xmlRequest->addNode("recipient", $recipient, "message");
+            }
+        }
+
+        $response = $this->getClient()->request("POST", "", [
+            "body" => $xmlRequest->get()
+        ]);
+
+        return Response::get($response->getBody()->getContents());
+    }
+
+    /**
+     * @param string $messageId
+     * @return \ErrorException|\SimpleXMLElement
+     */
+    public function status($messageId)
+    {
+        $xmlRequest = XmlRequest::createRequest($this->credentials);
+        $xmlRequest->addNode("sms_id", $messageId);
+
+        $response = $this->getClient()->request("POST", "", [
+            "body" => $xmlRequest->get()
+        ]);
+
+        return Response::get($response->getBody()->getContents());
     }
 
     /**

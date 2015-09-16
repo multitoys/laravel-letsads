@@ -13,9 +13,9 @@ class XmlRequest
 
     /**
      * Request constructor.
-     * @param $domTree
+     * @param DOMDocument $domTree
      */
-    public function __construct($domTree)
+    public function __construct(DOMDocument $domTree)
     {
         $this->domTree = $domTree;
     }
@@ -40,13 +40,24 @@ class XmlRequest
     }
 
     /**
+     * @param string $name
+     * @param string $value
+     * @param null|string $targetNode
      * @return bool
      */
-    public function addBalanceNode()
+    public function addNode($name, $value = null, $targetNode = null)
     {
-        $balance = $this->domTree->createElement("balance");
+        $node = $this->domTree->createElement($name, $value);
         $requestNode = $this->domTree->getElementsByTagName("request")->item(0);
-        $requestNode->appendChild($balance);
+
+        if (!$targetNode) {
+            $requestNode->appendChild($node);
+            return true;
+        }
+
+        $targetNode = $this->domTree->getElementsByTagName($targetNode)->item(0);
+        $targetNode->appendChild($node);
+
         return true;
     }
 
