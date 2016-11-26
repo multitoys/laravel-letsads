@@ -9,7 +9,7 @@ class XmlRequest
     /**
      * @var DOMDocument
      */
-    protected $domTree;
+    public $domTree;
 
     /**
      * Request constructor.

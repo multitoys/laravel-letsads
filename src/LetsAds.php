@@ -2,51 +2,59 @@
 
 namespace Rhinodontypicus\LetsAds;
 
-use \GuzzleHttp\Client;
-
-/**
- * Class LetsAds
- * @package Rhinodontypicus\LetsAds
- */
-
 class LetsAds
 {
     /**
+     * @var LetsAdsGateway
+     */
+    private $gateway;
+
+    /**
      * @var array
      */
-    protected $credentials;
+    private $credentials;
 
     /**
      * LetsAds constructor.
      * @param array $credentials
+     * @param LetsAdsGateway $gateway
      */
-    public function __construct(array $credentials)
+    public function __construct(array $credentials, LetsAdsGateway $gateway)
     {
         $this->credentials = $credentials;
+        $this->gateway = $gateway;
     }
 
     /**
-     * @return \ErrorException|\SimpleXMLElement
+     * @return XmlRequest
      */
-    public function balance()
+    public function createBalanceXmlRequest()
     {
         $xmlRequest = XmlRequest::createRequest($this->credentials);
         $xmlRequest->addNode("balance");
 
-        $response = $this->getClient()->request("POST", "", [
-            "body" => $xmlRequest->get()
-        ]);
-
-        return Response::get($response->getBody()->getContents());
+        return $xmlRequest;
     }
 
     /**
-     * @param string $message
-     * @param string $from
-     * @param string|array $recipients
-     * @return \ErrorException|\SimpleXMLElement
+     * @param $messageId
+     * @return XmlRequest
      */
-    public function send($message, $from, $recipients)
+    public function createStatusXmlRequest($messageId)
+    {
+        $xmlRequest = XmlRequest::createRequest($this->credentials);
+        $xmlRequest->addNode("sms_id", $messageId);
+
+        return $xmlRequest;
+    }
+
+    /**
+     * @param $message
+     * @param $from
+     * @param $recipients
+     * @return XmlRequest
+     */
+    public function createSendXmlRequest($message, $from, $recipients)
     {
         $xmlRequest = XmlRequest::createRequest($this->credentials);
         $xmlRequest->addNode("message");
@@ -61,11 +69,26 @@ class LetsAds
             }
         }
 
-        $response = $this->getClient()->request("POST", "", [
-            "body" => $xmlRequest->get()
-        ]);
+        return $xmlRequest;
+    }
 
-        return Response::get($response->getBody()->getContents());
+    /**
+     * @return \ErrorException|\SimpleXMLElement
+     */
+    public function balance()
+    {
+        return $this->gateway->request($this->createBalanceXmlRequest());
+    }
+
+    /**
+     * @param string $message
+     * @param string $from
+     * @param string|array $recipients
+     * @return \ErrorException|\SimpleXMLElement
+     */
+    public function send($message, $from, $recipients)
+    {
+        $this->gateway->request($this->createSendXmlRequest($message, $from, $recipients));
     }
 
     /**
@@ -74,26 +97,6 @@ class LetsAds
      */
     public function status($messageId)
     {
-        $xmlRequest = XmlRequest::createRequest($this->credentials);
-        $xmlRequest->addNode("sms_id", $messageId);
-
-        $response = $this->getClient()->request("POST", "", [
-            "body" => $xmlRequest->get()
-        ]);
-
-        return Response::get($response->getBody()->getContents());
-    }
-
-    /**
-     * @return Client
-     */
-    private function getClient()
-    {
-        return new Client([
-            "base_uri" => "http://letsads.com/api",
-            "headers" => [
-                "Content-Type" => "text/xml"
-            ]
-        ]);
+        $this->gateway->request($this->createStatusXmlRequest($messageId));
     }
 }
