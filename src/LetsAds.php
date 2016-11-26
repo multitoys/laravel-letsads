@@ -61,7 +61,7 @@ class LetsAds
         $xmlRequest->addNode('from', $from, 'message');
         $xmlRequest->addNode('text', $message, 'message');
 
-        if (!is_array($recipients)) {
+        if (! is_array($recipients)) {
             $xmlRequest->addNode('recipient', $recipients, 'message');
         } else {
             foreach ($recipients as $recipient) {

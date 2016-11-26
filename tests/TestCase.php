@@ -7,7 +7,7 @@ use Orchestra\Testbench\TestCase as Orchestra;
 abstract class TestCase extends Orchestra
 {
     /**
-     * Set Up
+     * Set Up.
      */
     public function setUp()
     {
