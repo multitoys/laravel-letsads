@@ -10,7 +10,7 @@ class Response
     /**
      * Errors
      */
-    const ERRORS = [
+    protected static $errors = [
         "NO_DATA" => "Data error: xml not sent",
         "WRONG_DATA_FORMAT" => "Wrong xml format",
         "REQUEST_FORMAT" => "Wrong request format",
@@ -63,7 +63,7 @@ class Response
     public static function getErrorMessage(SimpleXMLElement $xmlElement)
     {
         $error = "Unknown Error";
-        foreach (self::ERRORS as $key => $value) {
+        foreach (self::$errors as $key => $value) {
             if (strpos($xmlElement->description->__toString(), $key) !== false) {
                 $error = $value;
             }
