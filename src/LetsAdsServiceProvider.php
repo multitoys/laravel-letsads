@@ -13,14 +13,14 @@ class LetsAdsServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton("letsads", function () {
+        $this->app->singleton('letsads', function () {
             return new LetsAds([
-                "login" => config("letsads.login"),
-                "password" => config("letsads.password")
+                'login' => config('letsads.login'),
+                'password' => config('letsads.password')
             ], new LetsAdsGateway());
         });
 
-        $this->mergeConfigFrom(__DIR__ . "/config/main.php", "letsads");
+        $this->mergeConfigFrom(__DIR__ . '/config/main.php', 'letsads');
     }
 
     /**
@@ -31,7 +31,7 @@ class LetsAdsServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . "/config/main.php" => config_path("letsads.php"),
+            __DIR__ . '/config/main.php' => config_path('letsads.php'),
         ]);
     }
 }

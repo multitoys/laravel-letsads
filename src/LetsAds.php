@@ -31,7 +31,7 @@ class LetsAds
     public function createBalanceXmlRequest()
     {
         $xmlRequest = XmlRequest::createRequest($this->credentials);
-        $xmlRequest->addNode("balance");
+        $xmlRequest->addNode('balance', '');
 
         return $xmlRequest;
     }
@@ -43,7 +43,7 @@ class LetsAds
     public function createStatusXmlRequest($messageId)
     {
         $xmlRequest = XmlRequest::createRequest($this->credentials);
-        $xmlRequest->addNode("sms_id", $messageId);
+        $xmlRequest->addNode('sms_id', $messageId);
 
         return $xmlRequest;
     }
@@ -57,15 +57,15 @@ class LetsAds
     public function createSendXmlRequest($message, $from, $recipients)
     {
         $xmlRequest = XmlRequest::createRequest($this->credentials);
-        $xmlRequest->addNode("message");
-        $xmlRequest->addNode("from", $from, "message");
-        $xmlRequest->addNode("text", $message, "message");
+        $xmlRequest->addNode('message');
+        $xmlRequest->addNode('from', $from, 'message');
+        $xmlRequest->addNode('text', $message, 'message');
 
         if (!is_array($recipients)) {
-            $xmlRequest->addNode("recipient", $recipients, "message");
+            $xmlRequest->addNode('recipient', $recipients, 'message');
         } else {
             foreach ($recipients as $recipient) {
-                $xmlRequest->addNode("recipient", $recipient, "message");
+                $xmlRequest->addNode('recipient', $recipient, 'message');
             }
         }
 
