@@ -12,8 +12,8 @@ class LetsAdsGateway
      */
     public function request($xmlRequest)
     {
-        $response = $this->getClient()->request("POST", "", [
-            "body" => $xmlRequest->get()
+        $response = $this->getClient()->request('POST', '', [
+            'body' => $xmlRequest->get()
         ]);
 
         return Response::get($response->getBody()->getContents());
@@ -25,9 +25,9 @@ class LetsAdsGateway
     private function getClient()
     {
         return new Client([
-            "base_uri" => "http://letsads.com/api",
-            "headers" => [
-                "Content-Type" => "text/xml"
+            'base_uri' => 'http://letsads.com/api',
+            'headers' => [
+                'Content-Type' => 'text/xml'
             ]
         ]);
     }

@@ -26,15 +26,15 @@ class XmlRequest
      */
     public static function createRequest($credentials)
     {
-        $domTree = new DOMDocument("1.0", "UTF-8");
-        $requestRoot = $domTree->createElement("request");
+        $domTree = new DOMDocument('1.0', 'UTF-8');
+        $requestRoot = $domTree->createElement('request');
         $requestRoot = $domTree->appendChild($requestRoot);
 
-        $authRoot = $domTree->createElement("auth");
+        $authRoot = $domTree->createElement('auth');
         $authRoot = $requestRoot->appendChild($authRoot);
 
-        $authRoot->appendChild($domTree->createElement("login", $credentials["login"]));
-        $authRoot->appendChild($domTree->createElement("password", $credentials["password"]));
+        $authRoot->appendChild($domTree->createElement('login', $credentials['login']));
+        $authRoot->appendChild($domTree->createElement('password', $credentials['password']));
 
         return new self($domTree);
     }
@@ -48,7 +48,7 @@ class XmlRequest
     public function addNode($name, $value = null, $targetNode = null)
     {
         $node = $this->domTree->createElement($name, $value);
-        $requestNode = $this->domTree->getElementsByTagName("request")->item(0);
+        $requestNode = $this->domTree->getElementsByTagName('request')->item(0);
 
         if (!$targetNode) {
             $requestNode->appendChild($node);
