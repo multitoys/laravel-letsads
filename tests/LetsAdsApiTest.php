@@ -13,7 +13,7 @@ class LetsAdsApiTest extends TestCase
 
         $excepted = <<<EOT
 <?xml version="1.0" encoding="UTF-8"?>
-<request><auth><login/><password/></auth><balance/></request>\n
+<request><auth><login>login</login><password>password</password></auth><balance/></request>\n
 EOT;
 
         $this->assertEquals($excepted, $xmlRequest->get());
@@ -28,7 +28,7 @@ EOT;
 
         $excepted = <<<EOT
 <?xml version="1.0" encoding="UTF-8"?>
-<request><auth><login/><password/></auth><sms_id>1</sms_id></request>\n
+<request><auth><login>login</login><password>password</password></auth><sms_id>1</sms_id></request>\n
 EOT;
 
         $this->assertEquals($excepted, $xmlRequest->get());
@@ -43,7 +43,7 @@ EOT;
 
         $excepted = <<<EOT
 <?xml version="1.0" encoding="UTF-8"?>
-<request><auth><login/><password/></auth><message><from>Sender</from><text>Text</text><recipient>123</recipient></message></request>\n
+<request><auth><login>login</login><password>password</password></auth><message><from>Sender</from><text>Text</text><recipient>123</recipient></message></request>\n
 EOT;
 
         $this->assertEquals($excepted, $xmlRequest->get());
@@ -58,7 +58,7 @@ EOT;
 
         $excepted = <<<EOT
 <?xml version="1.0" encoding="UTF-8"?>
-<request><auth><login/><password/></auth><message><from>Sender</from><text>Text</text><recipient>123</recipient><recipient>456</recipient></message></request>\n
+<request><auth><login>login</login><password>password</password></auth><message><from>Sender</from><text>Text</text><recipient>123</recipient><recipient>456</recipient></message></request>\n
 EOT;
 
         $this->assertEquals($excepted, $xmlRequest->get());

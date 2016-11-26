@@ -15,6 +15,18 @@ abstract class TestCase extends Orchestra
     }
 
     /**
+     * Define environment setup.
+     *
+     * @param  \Illuminate\Foundation\Application  $app
+     * @return void
+     */
+    protected function getEnvironmentSetUp($app)
+    {
+        $app['config']->set('letsads.login', 'login');
+        $app['config']->set('letsads.password', 'password');
+    }
+
+    /**
      * @param \Illuminate\Foundation\Application $app
      *
      * @return array
