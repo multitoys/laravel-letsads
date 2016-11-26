@@ -52,6 +52,7 @@ class XmlRequest
 
         if (! $targetNode) {
             $requestNode->appendChild($node);
+
             return true;
         }
 

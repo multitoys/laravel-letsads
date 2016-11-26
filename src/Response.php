@@ -8,7 +8,7 @@ use SimpleXMLElement;
 class Response
 {
     /**
-     * Errors
+     * Errors.
      */
     protected static $errors = [
         'NO_DATA' => 'Data error: xml not sent',
@@ -68,6 +68,7 @@ class Response
                 $error = $value;
             }
         }
+
         return $error;
     }
 }
