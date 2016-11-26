@@ -1,5 +1,0 @@
-suites:
-    test_suite:
-        namespace: Rhinodontypicus\LetsAds
-        psr4_prefix: Rhinodontypicus\LetsAds
-        src_path: src

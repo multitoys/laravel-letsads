@@ -17,7 +17,7 @@ class LetsAdsServiceProvider extends ServiceProvider
             return new LetsAds([
                 "login" => config("letsads.login"),
                 "password" => config("letsads.password")
-            ]);
+            ], new LetsAdsGateway());
         });
 
         $this->mergeConfigFrom(__DIR__ . "/config/main.php", "letsads");
