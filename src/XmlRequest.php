@@ -50,7 +50,7 @@ class XmlRequest
         $node = $this->domTree->createElement($name, $value);
         $requestNode = $this->domTree->getElementsByTagName('request')->item(0);
 
-        if (!$targetNode) {
+        if (! $targetNode) {
             $requestNode->appendChild($node);
             return true;
         }
@@ -66,6 +66,6 @@ class XmlRequest
      */
     public function get()
     {
-        return $this->domTree->saveXML();
+        return $this->domTree->saveXML(null, LIBXML_NOEMPTYTAG);
     }
 }

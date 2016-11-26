@@ -16,7 +16,7 @@ class LetsAdsServiceProvider extends ServiceProvider
         $this->app->singleton('letsads', function () {
             return new LetsAds([
                 'login' => config('letsads.login'),
-                'password' => config('letsads.password')
+                'password' => config('letsads.password'),
             ], new LetsAdsGateway());
         });
 
