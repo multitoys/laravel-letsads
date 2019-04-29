@@ -8,17 +8,8 @@
     ],
     "homepage": "https://github.com/multitoys/laravel-letsads",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Denis Isaychenko",
-            "email": "rhinodontypicus@gmail.com",
-            "homepage": "http://laravelinfo.com",
-            "role": "Developer"
-        }
-    ],
     "require": {
         "php": "^7.0",
-        "illuminate/support": "~5.8.0",
         "guzzlehttp/guzzle": "~6.0"
     },
     "require-dev": {
