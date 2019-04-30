@@ -18,12 +18,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Rhinodontypicus\\LetsAds\\": "src/"
+            "Multitoys\\LetsAds\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Rhinodontypicus\\LetsAds\\Test\\": "tests"
+            "Multitoys\\LetsAds\\Test\\": "tests"
         }
     },
     "config": {
@@ -34,7 +34,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.1-dev"
+            "dev-master": "2.0-dev"
         }
     }
 }
