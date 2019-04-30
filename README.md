@@ -11,7 +11,7 @@ Laravel 5.x package for [LetsAds](http://letsads.com) SMS provider.
 
 You can install the package via composer:
 ``` bash
-$ composer require rhincodon/laravel-letsads
+$ composer require multitoys/laravel-letsads
 ```
 
 This service provider must be installed. And facade:
@@ -19,16 +19,16 @@ This service provider must be installed. And facade:
 // config/app.php
 'providers' => [
     ...
-    Rhinodontypicus\LetsAds\LetsAdsServiceProvider::class,
+    Multitoys\LetsAds\LetsAdsServiceProvider::class,
 ];
 'aliases' => [
-    'LetsAds' => Rhinodontypicus\LetsAds\LetsAdsFacade::class,
+    'LetsAds' => Multitoys\LetsAds\LetsAdsFacade::class,
 ];
 ```
 
 You can publish the migration with:
 ```bash
-php artisan vendor:publish --provider="Rhinodontypicus\LetsAds\LetsAdsServiceProvider"
+php artisan vendor:publish --provider="Multitoys\LetsAds\LetsAdsServiceProvider"
 ```
 
 ## Usage
@@ -51,7 +51,7 @@ LetsAds::status($messageId);
 
 ## Credits
 
-- [rhinodontypicus](https://github.com/rhincodon)
+- [Multitoys](https://github.com/multitoys)
 
 ## License
 
