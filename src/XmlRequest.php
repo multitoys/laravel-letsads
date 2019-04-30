@@ -1,6 +1,6 @@
 <?php
 
-namespace Rhinodontypicus\LetsAds;
+namespace Multitoys\LetsAds;
 
 use DOMDocument;
 
