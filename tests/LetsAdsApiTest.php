@@ -1,6 +1,6 @@
 <?php
 
-namespace Rhinodontypicus\LetsAds\Test;
+namespace Multitoys\LetsAds\Test;
 
 class LetsAdsApiTest extends TestCase
 {
