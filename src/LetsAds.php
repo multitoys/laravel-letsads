@@ -1,6 +1,6 @@
 <?php
 
-namespace Rhinodontypicus\LetsAds;
+namespace Multitoys\LetsAds;
 
 class LetsAds
 {
@@ -88,7 +88,7 @@ class LetsAds
      */
     public function send($message, $from, $recipients)
     {
-        $this->gateway->request($this->createSendXmlRequest($message, $from, $recipients));
+        return $this->gateway->request($this->createSendXmlRequest($message, $from, $recipients));
     }
 
     /**
@@ -97,6 +97,6 @@ class LetsAds
      */
     public function status($messageId)
     {
-        $this->gateway->request($this->createStatusXmlRequest($messageId));
+        return $this->gateway->request($this->createStatusXmlRequest($messageId));
     }
 }
