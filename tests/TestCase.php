@@ -1,6 +1,6 @@
 <?php
 
-namespace Rhinodontypicus\LetsAds\Test;
+namespace Multitoys\LetsAds\Test;
 
 use Orchestra\Testbench\TestCase as Orchestra;
 
@@ -34,7 +34,7 @@ abstract class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            \Rhinodontypicus\LetsAds\LetsAdsServiceProvider::class,
+            \Multitoys\LetsAds\LetsAdsServiceProvider::class,
         ];
     }
 
@@ -45,7 +45,7 @@ abstract class TestCase extends Orchestra
     protected function getPackageAliases($app)
     {
         return [
-            'LetsAds' => \Rhinodontypicus\LetsAds\LetsAdsFacade::class,
+            'LetsAds' => \Multitoys\LetsAds\LetsAdsFacade::class,
         ];
     }
 }
