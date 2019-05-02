@@ -30,8 +30,10 @@ class LetsAdsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->publishes([
-            __DIR__.'/config/main.php' => config_path('letsads.php'),
-        ]);
+        if (!env('LETSADS_LUMEN')) {
+            $this->publishes([
+                __DIR__ . '/config/main.php' => config_path('letsads.php'),
+            ]);
+        }
     }
 }
